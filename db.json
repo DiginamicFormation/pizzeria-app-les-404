@@ -1,25 +1,80 @@
 {
-  "trips": [
+  "item": [
     {
-      "id": "paris",
-      "name": "Paris",
-      "imageUrl": "img/paris.jpg",
-      "price": "88"
+      "id": "1",
+      "type": "pizza",
+      "label": "Margherita",
+      "description": "Margerita pizza",
+      "price": "12.00",
+      "category": "meat",
+      "imageUrl": "./assets/img/pizza-margherita.jpg"
     },
     {
-      "id": "nyc",
-      "name": "New York",
-      "imageUrl": "img/nyc.jpg"
+      "id": "2",
+      "type": "drink",
+      "label": "Coca-cola",
+      "description": "Coca",
+      "price": "3.00",
+      "imageUrl": "./assets/img/drink-coca-cola.jpg"
     },
     {
-      "id": "rome",
-      "name": "Rome",
-      "imageUrl": "img/rome.jpg"
+      "id": "3",
+      "type": "entree",
+      "label": "Caesar salad",
+      "description": "Salad",
+      "price": "5.00",
+      "imageUrl": "./assets/img/entree-caesar-salad.jpg"
     },
     {
-      "id": "tokyo",
-      "name": "Tokyo",
-      "imageUrl": "img/tokyo.jpg"
+      "id": "4",
+      "type": "dessert",
+      "label": "Yogurt",
+      "description": "Yogurt",
+      "price": "2.00",
+      "imageUrl": "./assets/img/dessert-yogurt.jpg"
+    },
+    {
+      "id": "5",
+      "type": "menu",
+      "label": "Best of",
+      "description": "Best of",
+      "coeff": "0.80",
+      "imageUrl": "./assets/img/menu-bestof.png",
+      "items": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ],
+  "account": [
+    {
+      "id": "1",
+      "firstName": "Robert",
+      "lastName": "Malto",
+      "email": "r.m@gmail.com",
+      "password": "12345678",
+      "adresse": "1235 rue de la Paix 75000 Paris"
+    },
+    {
+      "id": "2",
+      "firstName": "Georges",
+      "lastName": "Trepo",
+      "email": "g.t@gmail.com",
+      "password": "12345678",
+      "adresse": "12 rue de la Guerre 44000 Nantes"
+    }
+  ],
+  "command": [
+    {
+      "id": "CMD11225",
+      "items": [
+        "1",
+        "2",
+        "3"
+      ],
+      "date": "20/05/1999",
+      "status": "pending"
     }
   ]
 }
