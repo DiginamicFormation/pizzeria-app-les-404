@@ -1,0 +1,25 @@
+{
+  "trips": [
+    {
+      "id": "paris",
+      "name": "Paris",
+      "imageUrl": "img/paris.jpg",
+      "price": "88"
+    },
+    {
+      "id": "nyc",
+      "name": "New York",
+      "imageUrl": "img/nyc.jpg"
+    },
+    {
+      "id": "rome",
+      "name": "Rome",
+      "imageUrl": "img/rome.jpg"
+    },
+    {
+      "id": "tokyo",
+      "name": "Tokyo",
+      "imageUrl": "img/tokyo.jpg"
+    }
+  ]
+}
