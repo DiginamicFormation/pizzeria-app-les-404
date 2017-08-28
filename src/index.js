@@ -1,5 +1,7 @@
 // Dependencies
 import angular from 'angular'
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
+import uiBootstrap from 'angular-ui-bootstrap'
 
 // Modules
 import log from './log/log.module'
@@ -8,4 +10,4 @@ import command from './command/command.module'
 import menu from './menu/menu.module'
 
 angular
-  .module('pizzeriaApp', ['ui.bootstrap', log.name, command.name, menu.name])
+  .module('pizzeriaApp', [uiBootstrap, log.name, command.name, menu.name])
