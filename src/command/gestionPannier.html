@@ -1,0 +1,88 @@
+<section ng-controller="CommandCtrl as ctrl">
+
+<h1> Votre panier <h1>
+
+<div class="Votre Panier">   
+    
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                </tr>
+            </thead>
+             <tbody>
+                 <tr ng-repeat="item...">
+                     <td><img ng-src="{{url}}"></img></td>
+                     <td>
+                     <ul>
+
+                        <li> "{{libelle}}" </li>
+                        <li> "{{description}}" </li>
+                        <a href="url">Suprimmer</a>
+                        
+                    </ul>
+                    </td>
+
+                    <td> {{item.prix}}</td>
+                    <td> 
+                        <div class="form-group">
+                            <label for="sel1">Select list:</label>
+                            <select class="form-control" id="sel1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ </div>
+
+<!-- Code Promotion-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="">Code Promotion</label>  
+        <div class="col-md-4">
+        <input id="" name="" type="text" placeholder="" class="form-control input-md">  
+    </div>
+
+    <a href="url">Appliquer</a>
+
+    <table class="table prix">
+  <tbody>
+    <tr>
+      <th scope="row">Total</th>
+      <td>{{}}€</td>
+    </tr>
+    <tr>
+      <th scope="row">Promotion -10%</th>
+      <td>{{}}€</td>
+    </tr>
+    <tr>
+      <th scope="row">Total à payer</th>
+      <td>{{}}€</td>
+    </tr>
+  </tbody>
+</table>
+
+<button ng-click="">Passer la commande </button>
+</div>
+
+
+<div class= "suggestions">
+<h1>Suggestions<h1>
+    <div>
+    <img ng-src="{{url}}"></img>
+    <button ng-click="">Ajouter au panier </button>
+    </div>
+</div>
+
+
+</section>
