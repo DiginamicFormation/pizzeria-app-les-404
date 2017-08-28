@@ -1,6 +1,7 @@
 export default class logService {
-    constructor($http){
+    constructor($http, apiUrlsService){
         this.$http = $http
+        this.apiUrls = apiUrlsService
     }
     
     isConnected(){
@@ -9,13 +10,15 @@ export default class logService {
     
     checkUser(email, password){
         let found = false
-        this.$http.get('localhost:3000/account')
+        this.$http.get(this.apiUrls.account)
             .then(users => {
-                users.forEach(user => {
-                    if(user.email == email && user.password == password){
-                        found = true
-                    }
-                })
+                if(users.length>0){
+                    users.forEach(user => {
+                        if(user.email == email && user.password == password){
+                            found = true
+                        }
+                    })
+                }
         })
         return found
     }
@@ -32,13 +35,13 @@ export default class logService {
     createUser(user){
         if(user.email && user.password && !this.checkUser(user.email, user.password)){
             user.id = this.getNextId()
-            this.$http.post('localhost:3000/account', user)
+            this.$http.post(this.apiUrls.account, user)
         }
     }
     
     getNextId(){
         let maxId = false
-        this.$http.get('localhost:3000/account')
+        this.$http.get(this.apiUrls.account)
             .then(users => {
                 users.forEach(user => {
                     if(user.id > maxId){
