@@ -2,6 +2,7 @@
 import angular from 'angular'
 import bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import uiBootstrap from 'angular-ui-bootstrap'
+import '../public/assets/css/styles.css'
 
 // Modules
 import log from './log/log.module'
