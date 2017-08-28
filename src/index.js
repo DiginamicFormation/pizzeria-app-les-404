@@ -1,6 +1,8 @@
 // Dependencies
 import angular from 'angular'
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import uiBootstrap from 'angular-ui-bootstrap'
+import '../public/assets/css/styles.css'
 
 // Modules
 import log from './log/log.module'
@@ -12,6 +14,6 @@ angular
   .module('pizzeriaApp', [uiBootstrap, log.name])
   .config(($routeProvider) => {
       $routeProvider.otherwise({
-          redirectTo : '/logging'
+          redirectTo : '/'
       });
 });
