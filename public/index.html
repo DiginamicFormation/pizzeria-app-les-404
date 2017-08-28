@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizzeria App</title>
+    <script src="bundle.js"></script>
 </head>
 
-<body>
-    <script src="bundle.js"></script>
-
-    <h1>Pizzeria</h1>
+<body ng-app="pizzeriaApp">
+    <div ng-view></div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <span class="text-muted col-sm-4 text-center piped-part">Paula Aymerich</span>
+                <span class="text-muted col-sm-4 text-center piped-part">Etienne Bourreau</span>
+                <span class="text-muted col-sm-4 text-center">Damien Guironnet</span>
+            </div>
+        </div>
+    </footer>
 </body>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <span class="text-muted col-sm-4 text-center piped-part">Paula Aymerich</span>
-            <span class="text-muted col-sm-4 text-center piped-part">Etienne Bourreau</span>
-            <span class="text-muted col-sm-4 text-center">Damien Guironnet</span>
-        </div>
-    </div>
-</footer>
 
 </html>
