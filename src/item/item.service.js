@@ -14,7 +14,7 @@ export default class ItemService {
             })
     }
 
-    getItemByType(type) {
+    getItemsByType(type) {
         return this.$http.get(this.apiUrlsService.item)
             .then((result) => {
                 return result.data.filter(i => i.type === type)
