@@ -34,3 +34,32 @@ body {
 label.text-primary > .badge {
     background-color: #337ab7;
 }
+
+.logo img{
+    max-height: 100px;
+}
+
+nav.row{
+    border: 1px solid #ddd;
+}
+
+ul{
+    margin: 5px 0 5px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+ul.actions{
+    padding: 30px;
+    justify-content: flex-end;
+}
+
+ul li{
+    margin-right: 4px;
+}
+
+.header{
+    margin-bottom: 15px;
+}
