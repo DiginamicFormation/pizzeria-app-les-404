@@ -1,0 +1,37 @@
+<section>
+
+    <h1> Votre panier
+        <h1>
+
+            <div class="Votre Panier">
+
+
+                <div class="table-responsive">
+                    <table class="table" class="col-md-12 col-xs-12">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in $ctrl.panier">
+                                <td><img ng-src="{{item.item.imageUrl}}" height="300" width="300"></img>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li> {{item.item.label}} </li><br>
+                                        <li> {{item.item.description}} </li><br>
+                                    </ul>
+                                </td>
+
+                                <td> {{item.item.price}}€</td>
+                                <td> {{item.quantity}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>

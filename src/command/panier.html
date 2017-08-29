@@ -1,43 +1,47 @@
 <section>
 
-<h1> Votre panier <h1>
+    <h1> Votre panier
+        <h1>
 
-<div class="Votre Panier">   
-    
+            <div class="Votre Panier">
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                </tr>
-            </thead>
-             <tbody>
-                 <tr ng-repeat="item in $ctrl.panier">
-                     <td><img ng-src="{{item.item.imageUrl}}" height="200" width="200"></img></td>
-                     <td>
-                     <ul>
 
-                        <li> {{item.item.label}} </li>
-                        <li> {{item.item.description}} </li>
-                        <button ng-click ="$ctrl.removeItem(item.item.id)">Suprimmer</button>
-                        
-                    </ul>
-                    </td>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in $ctrl.panier">
+                                <td><img ng-src="{{item.item.imageUrl}}" height="300" width="300"></img>
+                                </td>
+                                <td>
+                                    <ul>
 
-                    <td> {{item.item.price}}</td>
-                    <td> 
-                        <div class="form-group">
-                             <input type="number" ng-change="$ctrl.changeQuantity(item)" ng-model="item.quantity" name="quantity" min="1" max="5" step='1'>
-                        </div>
-                    </td>
-                </tr>
-               
-            </tbody>
-        </table>
-    </div>
- </div>
+                                        <li> {{item.item.label}} </li><br>
+                                        <li> {{item.item.description}} </li><br>
+                                        <li>
+                                            <a ng-click="$ctrl.removeItem(item.item.id)" class="btn btn-danger">Suprimmer</a>
+                                        </li>
 
+
+                                    </ul>
+                                </td>
+
+                                <td> {{item.item.price}}€</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" ng-change="$ctrl.changeQuantity(item)" ng-model="item.quantity" name="quantity" min="1" max="5" step='1'>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>

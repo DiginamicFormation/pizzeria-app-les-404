@@ -1,10 +1,10 @@
 import CommandCtrl from './command.controller'
-import panier from './panier.html'
+import commande from './commande.html'
 import footCommande from './footCommande.html'
 
 const commandComponent = {
     
-    template: panier+footCommande,
+    template: commande+footCommande,
     controller: CommandCtrl
 };
 
