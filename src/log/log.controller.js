@@ -9,7 +9,7 @@ export default class logCtrl{
         this.logService.checkUser(email, password)
             .then(found => {
                 if(found){
-                    this.logService.connect()
+                    this.logService.connect(found)
                     this.$location.path('/')
                     this.$location.hash('')
                 }else{
