@@ -1,0 +1,95 @@
+<section>
+
+<h1> Votre panier <h1>
+
+<div class="Votre Panier">   
+    
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                </tr>
+            </thead>
+             <tbody>
+                 <div class="row">
+                     <h3>TEST</h3>
+                     {{$ctrl.test | json }}
+                     <h3>TEST</h3>
+                 </div>
+                 <tr ng-repeat="item in $ctrl.panier.items">
+                     
+                     <td><img ng-src="{{$ctrl.item.imageUrl}}"></img></td>
+                     <td>
+                     <ul>
+
+                        <li> {{$ctrl.item.label}} </li>
+                        <li> {{$ctrl.item.description}} </li>
+                        <a ng-click ="removeItem(item.id)" href="url">Suprimmer</a>
+                        
+                    </ul>
+                    </td>
+
+                    <td> {{$ctrl.item.prix}}</td>
+                    <td> 
+                        <div class="form-group">
+                            
+                            <select class="form-control" id="sel1" ng-model="quantity">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ </div>
+
+<!-- Code Promotion-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="">Code Promotion</label>  
+        <div class="col-md-4">
+        <input id="" name="" type="text" placeholder="" class="form-control input-md">  
+    </div>
+
+    <a href="url">Appliquer</a>
+
+    <table class="table prix">
+  <tbody>
+    <tr>
+      <th scope="row">Total</th>
+      <td>{{ctrl.total}}€</td>
+    </tr>
+    <tr>
+      <th scope="row">Promotion -10%</th>
+      <td>-{{ctrl.promotion}}€</td>
+    </tr>
+    <tr>
+      <th scope="row">Total à payer</th>
+      <td>{{ctrl.paye}}€</td>
+    </tr>
+  </tbody>
+</table>
+
+<button ng-click="ctrl.passCommande('user')">Passer la commande </button>
+</div>
+
+
+<div class= "suggestions">
+<h1>Suggestions<h1>
+    <div>
+    <img ng-src="{{url}}"></img>
+    <button ng-click="">Ajouter au panier </button>
+    </div>
+</div>
+
+
+</section>
