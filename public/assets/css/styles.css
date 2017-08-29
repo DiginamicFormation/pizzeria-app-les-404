@@ -26,8 +26,11 @@ body {
     }
 }
 
-
-
 .bold {
     font-weight: bold;
+}
+
+/* Badge */
+label.text-primary > .badge {
+    background-color: #337ab7;
 }
