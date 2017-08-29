@@ -1,1 +1,36 @@
-<h1>LOG HTML</h1>
+<div class="col-xs-12" style="text-align: center;">
+    <style>
+        div.row{
+            margin-bottom: 10px;
+        }
+    </style>
+    <h1>Connexion</h1>
+    <hr>
+    <div ng-show="$ctrl.$location.hash()" class="col-xs-12 alert alert-danger">
+        Adresse email ou mot de passe invalide !
+    </div>
+    <form class="col-sm-8 col-sm-offset-2 form-horizontal">
+        <div class="row">
+            <label class="col-sm-4 control-label" for="email">
+                Email :
+            </label>
+            <div class="col-sm-8">
+                <input type="email" name="email" id="email" ng-model="$ctrl.email" placeholder="Votre adresse mail" class="form-control input-sm" required/>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 control-label" for="password">
+                Mot de passe :
+            </label>
+            <div class="col-sm-8">
+                <input type="password" id="password" ng-model="$ctrl.password" placeholder="Votre mot de passe" class="form-control input-sm" required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group" style="text-align: right;">
+                <input type="reset" class="btn btn-warning" value="Annuler"/>
+                <button class="btn btn-success" ng-click="$ctrl.tryConnect($ctrl.email, $ctrl.password)">Valider</button>
+            </div>
+        </div>
+    </form>
+</div>

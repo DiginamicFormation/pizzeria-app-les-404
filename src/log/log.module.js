@@ -1,4 +1,5 @@
 import ngRoute from 'angular-route'
+import apiUrlsService from '../apiUrls/apiUrls.service'
 
 import logService from './log.service'
 
@@ -11,7 +12,8 @@ const logModule = angular
     .component('loggingComponent', logComponent)
     .component('createAccountComponent', createAccountComponent)
     
-    .service('logService', logService)
+    .value('apiUrlsService', apiUrlsService)
+    .service('logService', ['$http', 'apiUrlsService', logService])
 
     .config(['$routeProvider', function($routeProvider){
         $routeProvider
