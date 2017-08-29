@@ -6,9 +6,12 @@ import ItemService from "../item/item.service"
 import ApiUrlsService from "../apiUrls/apiUrls.service"
 
 import panier from './panier.html'
+import footPanier from './footPanier.html'
 import commande from './commande.html'
+import footCommande from './footCommande.html'
 
 import commandComponent from './command.component'
+import panierComponent from './panier.component'
 
 const commandModule = angular.module('commandModule', ['ngRoute'])
 
@@ -18,11 +21,13 @@ const commandModule = angular.module('commandModule', ['ngRoute'])
 
 .component('commandComponent', commandComponent)
 
+.component('panierComponent', panierComponent)
+
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/panier',{
-        template: '<command-component></command-component>'
+        template: '<panier-component></panier-component>'
     }).when('/commande', {
-        template: commande
+        template: '<command-component></command-component>'
     });
 
 

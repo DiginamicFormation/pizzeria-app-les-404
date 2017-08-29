@@ -10,26 +10,7 @@ export default class CommandCtrl {
         
         this.itemList; //it will be send to create the command
         
-        this.itemss = {
-      "id": "1",
-      "type": "pizza",
-      "label": "Margherita",
-      "description": "Margerita pizza",
-      "price": "12.00",
-      "category": "veggie",
-      "imageUrl": "./assets/img/pizza/margherita.jpg"
-    }
-
-    this.items2 = {
-      "id": "2",
-      "type": "pizza",
-      "label": "4 cheese",
-      "description": "4 cheese pizza",
-      "price": "11.00",
-      "category": "veggie",
-      "imageUrl": "./assets/img/pizza/4cheese.jpg"
-    }
-
+        
 
         //initialization of panier
         this.panier = [{
@@ -41,6 +22,12 @@ export default class CommandCtrl {
                     quantity: 2
                 }]
 
+
+            this.panier.items.forEach(e => {
+            itemService.getItemById(e.item).then(item => {
+                e.item = item
+            })
+        })
         this.storage.setItem("panier", JSON.stringify(this.panier))
 
         this.calculs();
@@ -82,10 +69,7 @@ changeQuantity(item){
 
 //remove item(s) from basket (localStorage)!!!!
 removeItem(idItem) {
-    /*this.nouveauPanier = this.panier.items.filter((element)=>{
-        console.log(element.item.id, idItem,element.item.id==idItem)
-            return element.item.id == idItem;
-    })*/
+
     let newPanier = [];
     this.panier.forEach(item => {
         console.log(item.item);
@@ -93,6 +77,8 @@ removeItem(idItem) {
             newPanier.push(item);
         }
     })
+
+    
     console.log(newPanier);
     this.panier = newPanier;
    this.refresh();
@@ -117,6 +103,7 @@ this.paye = this.total - this.promotion
 
 passCommande(){
 //redirection
+this.$location.path("/commande")
 // /commande
 
 //create current in command service
@@ -142,11 +129,13 @@ return this.itemList;
 
 modifyCommande(){
 //redirect
+this.$location.path("/panier")
     ///pannier
 }
 
 confirmCommande(){
-//redirect??
+//redirect
+this.$location.path("/")
 //put
 commandService.finalizeCommand();
 }
