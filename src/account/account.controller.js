@@ -7,19 +7,19 @@ export default class AccountController {
 
         this.userId = sessionStorage.getItem('userId', true);
 
-        accountService.getUserById(this.userId).then((user) => {
+        accountService.getUserAccountById(this.userId).then((user) => {
             this.user = user
             this.master = angular.copy(user)
         })
 
-        accountService.getUserCommands(this.userId).then((commands) => {
+        accountService.getUserAccountCommands(this.userId).then((commands) => {
             this.commands = commands
         })
     }
 
     update(user) {
         this.master = angular.copy(user)
-        this.accountService.updateUser(user)
+        this.accountService.updateUserAccount(user)
     }
 
     reset() {

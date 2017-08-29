@@ -24,19 +24,19 @@
         <nav class="row">
             <ul>
                 <li>
-                    <a href="/#!/menu#menu" class="btn btn-default">Menus</a>
+                    <a href="/#!/menu#menu" class="btn" ng-class="$ctrl.$location.hash() === 'menu' ? 'btn-primary' : 'btn-default'">Menus</a>
                 </li>
                 <li>
-                    <a href="/#!/menu#entree" class="btn btn-default">Entrées</a>
+                    <a href="/#!/menu#entree" class="btn" ng-class="$ctrl.$location.hash() === 'entree' ? 'btn-primary' : 'btn-default'">Entrées</a>
                 </li>
                 <li>
-                    <a href="/#!/menu#pizza" class="btn btn-default">Pizzas</a>
+                    <a href="/#!/menu#pizza" class="btn" ng-class="$ctrl.$location.hash() === 'pizza' ? 'btn-primary' : 'btn-default'">Pizzas</a>
                 </li>
                 <li>
-                    <a href="/#!/menu#dessert" class="btn btn-default">Desserts</a>
+                    <a href="/#!/menu#dessert" class="btn" ng-class="$ctrl.$location.hash() === 'dessert' ? 'btn-primary' : 'btn-default'">Desserts</a>
                 </li>
                 <li>
-                    <a href="/#!/menu#drink" class="btn btn-default">Boissons</a>
+                    <a href="/#!/menu#drink" class="btn" ng-class="$ctrl.$location.hash() === 'drink' ? 'btn-primary' : 'btn-default'">Boissons</a>
                 </li>
             </ul>
         </nav>

@@ -4,14 +4,14 @@ export default class AccountService {
         this.apiUrls = apiUrlsService
     }
 
-    getUserById(userId) {
+    getUserAccountById(userId) {
         return this.$http.get(this.apiUrls.account + "/" + userId)
             .then(result => {
                 return result.data
             })
     }
 
-    updateUser(user) {
+    updateUserAccount(user) {
         if (user.email && user.password) {
 
             console.log(user);
@@ -28,7 +28,7 @@ export default class AccountService {
         }
     }
 
-    getUserCommands(userId) {
+    getUserAccountCommands(userId) {
         return this.$http.get(this.apiUrls.command)
             .then(result => {
                 let commands = result.data
