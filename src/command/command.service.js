@@ -43,6 +43,10 @@ export default class CommandService {
             })
 
     }
+    
+    getAmount(){
+        return 0;
+    }
 
 }
 

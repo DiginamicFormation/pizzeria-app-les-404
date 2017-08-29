@@ -5,18 +5,21 @@ export default class createAccountCtrl{
     }
     
     tryCreate(email, password){
-        this.logService.isMailFree(email)
-            .then(free => {
-                if(free){
-                    this.logService.createUser({email: email, password: password})
-                    this.logService.connect()
-                    this.$location.path('/')
-                    this.$location.hash('')
-                }else{
-                    this.$location.path('/createAccount')
-                    this.$location.hash('alreadyTaken')
-                }
-            })
+        if(email && password){
+            this.logService.isMailFree(email)
+                .then(free => {
+                    if(free){
+                        this.logService.createUser({email: email, password: password})
+                        this.logService.connect()
+                        this.$location.path('/')
+                        this.$location.hash('')
+                    }else{
+                        this.$location.hash('alreadyTaken')
+                    }
+                })
+        }else{
+            this.$location.hash('invalid')
+        }
     }
 }
 

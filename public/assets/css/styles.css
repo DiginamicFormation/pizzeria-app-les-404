@@ -63,3 +63,11 @@ ul li{
 .header{
     margin-bottom: 15px;
 }
+
+span.red{
+    color: red;
+}
+
+a img{
+    max-height: 20px;
+}
