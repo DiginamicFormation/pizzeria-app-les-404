@@ -4,53 +4,64 @@
 export default class CommandCtrl {
 
     constructor(itemService, CommandService){
-       this.commandService = CommandService;
+        this.commandService = CommandService;
         this.itemService = itemService;
+        this.storage = localStorage;
         this.itemList; //it will be send to create the command
         
+
+
+        //initialization of panier
+        this.panier = {
+            "items" : [
+                {
+                    item: this.itemService.getItemById("1"),
+                    quantity: 4
+                },
+                 {
+                    item: this.itemService.getItemById("2"),
+                    quantity: 2
+                },
+            ]
+        }
+
+        this.storage.setItem("panier", JSON.stringify(this.panier))
+
+
     }
 
 
-addItem(idItem, quantity){
+
+//getPanier
+getPanier(){
+        JSON.parse(this.storage.getItem("panier"))
+}
 
 
-    let i=0;
-    if (i<quantity){
-    while (i<quantity){
-    this.itemList.push(idItem)
-    i++;
-}}
-    else if (i>quantity){
-         while (quantity<i){
-    this.itemList.splice(idItem)
-    i--;
-    }}
-
+refresh(){
+ this.storage.setItem("panier", JSON.stringify(this.panier))
     calculs ();
 }
 
-countElem(idItem){
-    
-  this.itemList.forEach((item) => {
-      let i = 0;
-    if (item == idItem) {
-        i++;
-    }
-    return i;
-  })
+//add item to panier
+addItem(idItem, quantity){
+    this.panier.items.push({id: idItem,  quantity: quantity})
+   refresh();
 }
-//remove item(s) from basket (localStorage)
-removeItem(idItem) {
-  
-    let i = countElem(idItem);
-    let x = 0;
-    while (x<i){
-    let ind = this.itemList.indexOf(idItem);
-    this.itemList.splice(ind)
-    x++;
-    }
 
-calculs ();
+//change the quantity!!!!!
+changeQuantity(idItem, quantity){
+    removeItem(idItem);
+    addItem(idItem, quantity);
+    
+}
+
+//remove item(s) from basket (localStorage)!!!!
+removeItem(idItem) {
+    this.panier.items = this.panier.items.filter((element)=>{
+        return element.id == idItem;
+    })
+   refresh();
 } 
 
 
@@ -60,9 +71,11 @@ calculs(){
 
 this.total = 0;
 
-    this.itemList.forEach((item)=>{
-       total = total + this.itemService.getItemById(item).price;
-    })
+    this.panier.items.forEach((item)=>{
+        let price = this.itemService.getItemById(item.id).price
+        for (i=0; i<item.quantity; i++){  
+        total = total + price;
+    }})
 
 this.promotion = 0.1 * this.total
 this.paye = this.total - this.promotion
@@ -75,9 +88,25 @@ passCommande(idUser){
 // /commande
 
 //create current in command service
-commandService.createCommand();
+
+commandService.createCommand(idUser, createList());
 
 }
+
+ 
+
+createList(){
+for(var key in localStorage){
+for (i=0; i<storage.getItem(key); i++){
+this.itemList.push(key);
+}
+}}
+
+
+
+
+
+
 
 modifyCommande(){
 //redirect

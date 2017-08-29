@@ -1,4 +1,4 @@
-<section ng-controller="CommandCtrl as ctrl">
+<section>
 
 <h1> Votre panier <h1>
 
@@ -16,27 +16,34 @@
                 </tr>
             </thead>
              <tbody>
-                 <tr ng-repeat="item in ctrl.itemList">
-                     <td><img ng-src="{{ctrl.itemService.getItemById(item).imageUrl}}"></img></td>
+                 <div class="row">
+                     <h3>TEST</h3>
+                     {{$ctrl.test | json }}
+                     <h3>TEST</h3>
+                 </div>
+                 <tr ng-repeat="item in $ctrl.panier.items">
+                     
+                     <td><img ng-src="{{$ctrl.item.imageUrl}}"></img></td>
                      <td>
                      <ul>
 
-                        <li> {{ctrl.itemService.getItemById(item).label}} </li>
-                        <li> {{ctrl.itemService.getItemById(item).description}} </li>
-                        <a ng-click ="removeItem(item)" href="url">Suprimmer</a>
+                        <li> {{$ctrl.item.label}} </li>
+                        <li> {{$ctrl.item.description}} </li>
+                        <a ng-click ="removeItem(item.id)" href="url">Suprimmer</a>
                         
                     </ul>
                     </td>
 
-                    <td> {{ctrl.itemService.getItemById(item).prix}}</td>
+                    <td> {{$ctrl.item.prix}}</td>
                     <td> 
                         <div class="form-group">
-                            <label for="sel1">Select list:</label>
+                            
                             <select class="form-control" id="sel1" ng-model="quantity">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
+                                <option>5</option>
                             </select>
                         </div>
                     </td>
@@ -72,7 +79,7 @@
   </tbody>
 </table>
 
-<button ng-click="">Passer la commande </button>
+<button ng-click="ctrl.passCommande('user')">Passer la commande </button>
 </div>
 
 
