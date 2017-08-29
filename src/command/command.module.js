@@ -11,11 +11,13 @@ import commande from './commande.html'
 import commandComponent from './command.component'
 
 const commandModule = angular.module('commandModule', ['ngRoute'])
+
 .service('CommandService', CommandService)
-.controller('commandCtrl', CommandCtrl)
 .service('itemService', ItemService)
 .value('apiUrlsService', ApiUrlsService)
+
 .component('commandComponent', commandComponent)
+
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/panier',{
         template: '<command-component></command-component>'
@@ -26,7 +28,5 @@ const commandModule = angular.module('commandModule', ['ngRoute'])
 
 
 }])
-
-
 
 export default commandModule

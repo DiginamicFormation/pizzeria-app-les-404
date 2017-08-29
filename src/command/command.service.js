@@ -1,56 +1,68 @@
-
 export default class CommandService {
 
-    constructor($http){
+    constructor($http, itemService) {
         this.$http = $http;
-       
 
-        $http({method:'GET', url:'http://localhost:3000/command'})
-        .then((response) => {
-        this.listCommands = response.data
-        })
-        
 
-}
+ this.itemService = itemService;
 
-listCommands(){
-    return listCommands;
-}
+        $http({method: 'GET', url: 'http://localhost:3000/command'})
+            .then((response) => {
+                this.listCommands = response.data
+            })
 
+
+    }
+
+    listCommands() {
+        return listCommands;
+    }
 
 //initializes basket
-createCommand(idUser, itemList) {
-   return this.currentCommand = {
-            "id" : "CMD"+Math.floor((Math.random() * 100) + 1),
+    createCommand(idUser, itemList) {
+        return this.currentCommand = {
+            "id": "CMD" + Math.floor((Math.random() * 100) + 1),
             "idUser": idUser,
             "items": itemList,
             "date": null,
             "status": null,
         }
-} 
-
-
-
-
+    } 
 
 //create the command
-finalizeCommand() {
-   
-   //correct id pour la commande??
+    finalizeCommand() {
 
-    this.$http({
-        method:'POST', 
-        url:'http://localhost:3000/command/',
-        data: 
-           this.currentCommand
+        //correct id pour la commande??
+
+        this.$http({
+            method: 'POST',
+            url: 'http://localhost:3000/command/',
+            data:
+                this.currentCommand
 
         })
-    .then((response) => {
-    } )
+            .then((response) => {
+            })
+
+    }
+
+
+calculs(commande){
+
+let total = 0;
+
+    commande.items.forEach((element)=>{
+        
+        this.total = this.total + itemService.getItemById(element).price
+  })
+
+let promotion = 0.1 * this.total
+this.paye = total - promotion
 
 }
 
-}  
+
+}
 
 
 

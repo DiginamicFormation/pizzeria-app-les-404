@@ -7,6 +7,7 @@ export default class CommandCtrl {
         this.commandService = CommandService;
         this.itemService = itemService;
         this.storage = localStorage;
+        
         this.itemList; //it will be send to create the command
         
         this.itemss = {
@@ -114,13 +115,13 @@ this.paye = this.total - this.promotion
 }
 
 
-passCommande(idUser){
+passCommande(){
 //redirection
 // /commande
 
 //create current in command service
 
-commandService.createCommand(idUser, createList());
+commandService.createCommand(sessionStorage.getItem("userId"), createList());
 
 }
 

@@ -1,6 +1,7 @@
 export default class ItemsListCtrl {
-    constructor(itemService, $location) {
+    constructor(itemService, logService, $location) {
         this.itemService = itemService
+        this.logService = logService
         this.$location = $location
         this.itemType = this.$location.hash()
 
@@ -22,4 +23,4 @@ export default class ItemsListCtrl {
     }
 }
 
-ItemsListCtrl.$inject = ['itemService', '$location'];
+ItemsListCtrl.$inject = ['itemService', 'logService', '$location'];

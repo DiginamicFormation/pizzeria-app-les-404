@@ -1,22 +1,18 @@
 export default class headerCtrl{
-    //constructor(logService, commandService, $location){
-    constructor(logService, $location){
+    constructor(logService, CommandService, $location){
         this.logService = logService
-        //this.commandService = commandService
+        this.commandService = CommandService
         this.$location = $location
         this.logo = {title: "Pizzeria 404", url: "assets/img/404-logo.png"}
     }
     
-    getBasketAmount(){
+    getShoppingCartAmount(){
         return this.commandService.getAmount()
     }
     
     getConnectionStatus(){
         return this.logService.isConnected()
     }
-    
-    
 }
 
-//headerCtrl.$inject = ['logService', 'commandService', '$location']
-headerCtrl.$inject = ['logService', '$location']
+headerCtrl.$inject = ['logService', 'CommandService', '$location']

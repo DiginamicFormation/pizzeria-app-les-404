@@ -22,7 +22,7 @@ export default class logService {
                 if(users.length>0){
                     users.forEach(user => {
                         if(user.email == email && user.password == password){
-                            found = true
+                            found = user.id
                         }
                     })
                 }
@@ -46,12 +46,14 @@ export default class logService {
             })
     }
     
-    connect(){
+    connect(userId){
         sessionStorage.setItem('session', true)
+        sessionStorage.setItem('userId', userId)
     }
     
     disconnect(){
         sessionStorage.removeItem('session')
+        sessionStorage.removeItem('userId')
         sessionStorage.clear()
     }
     
