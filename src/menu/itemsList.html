@@ -28,7 +28,6 @@
             <div class="caption">
                 <h3 class="text-center">{{ item.label }}</h3>
                 <p>{{ item.description }}</p>
-                {{ $ctrl.logService.isConnected() }}
                 <p class="text-center" ng-if="$ctrl.logService.isConnected()">
                     <a class="btn btn-success" role="button" ng-click="$ctrl.addToBasket(item.id)">Ajouter</a>
                     <a class="btn btn-warning" role="button" ng-click="$ctrl.removeFromBasket(item.id)">Retirer</a>

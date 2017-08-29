@@ -1,6 +1,7 @@
 export default class ItemsListCtrl {
     constructor(itemService, logService, $location) {
         this.itemService = itemService
+        this.logService = logService
         this.$location = $location
         this.itemType = this.$location.hash()
 
