@@ -16,23 +16,23 @@
                 </tr>
             </thead>
              <tbody>
-                 <tr ng-repeat="item...">
-                     <td><img ng-src="{{url}}"></img></td>
+                 <tr ng-repeat="item in ctrl.itemList">
+                     <td><img ng-src="{{ctrl.itemService.getItemById(item).imageUrl}}"></img></td>
                      <td>
                      <ul>
 
-                        <li> "{{libelle}}" </li>
-                        <li> "{{description}}" </li>
-                        <a href="url">Suprimmer</a>
+                        <li> {{ctrl.itemService.getItemById(item).label}} </li>
+                        <li> {{ctrl.itemService.getItemById(item).description}} </li>
+                        <a ng-click ="removeItem(item)" href="url">Suprimmer</a>
                         
                     </ul>
                     </td>
 
-                    <td> {{item.prix}}</td>
+                    <td> {{ctrl.itemService.getItemById(item).prix}}</td>
                     <td> 
                         <div class="form-group">
                             <label for="sel1">Select list:</label>
-                            <select class="form-control" id="sel1">
+                            <select class="form-control" id="sel1" ng-model="quantity">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -59,15 +59,15 @@
   <tbody>
     <tr>
       <th scope="row">Total</th>
-      <td>{{}}€</td>
+      <td>{{ctrl.total}}€</td>
     </tr>
     <tr>
       <th scope="row">Promotion -10%</th>
-      <td>{{}}€</td>
+      <td>-{{ctrl.promotion}}€</td>
     </tr>
     <tr>
       <th scope="row">Total à payer</th>
-      <td>{{}}€</td>
+      <td>{{ctrl.paye}}€</td>
     </tr>
   </tbody>
 </table>

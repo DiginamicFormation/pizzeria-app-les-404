@@ -3,31 +3,27 @@ export default class CommandService {
 
     constructor($http){
         this.$http = $http;
+       
 
         $http({method:'GET', url:'http://localhost:3000/command'})
         .then((response) => {
         this.listCommands = response.data
         })
         
-         $http({method:'GET', url:'http://localhost:3000/item'})
-        .then((response) => {
-        this.listItems = response.data
-        })
 
 }
 
+listCommands(){
+    return listCommands;
+}
 
 
 //initializes basket
-createCommand(idUser) {
+createCommand(idUser, itemList) {
    return this.currentCommand = {
-            "id" : null,
+            "id" : "CMD"+Math.floor((Math.random() * 100) + 1),
             "idUser": idUser,
-            "items": [
-                null,
-                null,
-                null,
-            ],
+            "items": itemList,
             "date": null,
             "status": null,
         }
@@ -35,18 +31,7 @@ createCommand(idUser) {
 
 
 
-    
 
-
-
-
-
-
-//number of items in the basket (localStorage)
-getItemsNumber(idItem){
-    
-
-} 
 
 //create the command
 finalizeCommand() {
