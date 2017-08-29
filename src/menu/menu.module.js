@@ -5,20 +5,23 @@ import ItemService from "../item/item.service"
 import ApiUrlsService from "../apiUrls/apiUrls.service"
 
 // Components
-import pizzasComponent from "./pizzas.component"
+import itemsListComponent from "./itemsList.component"
+
+// Template
+let itemsListTpl = '<items-list-component></items-list-component>'
 
 const menuModule = angular
     .module('menuModule', [ngRoute])
 
-    .component('pizzasComponent', pizzasComponent)
+    .component('itemsListComponent', itemsListComponent)
 
     .service('itemService', ItemService)
     .value('apiUrlsService', ApiUrlsService)
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/pizzas', {
-                template: '<pizzas-component></pizzas-component>'
+            .when('/menu', {
+                template: '<items-list-component></items-list-component>'
             })
     }])
 

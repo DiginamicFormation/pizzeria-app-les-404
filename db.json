@@ -59,7 +59,7 @@
       "label": "Orangina",
       "description": "Orangina drink",
       "price": "3.15",
-      "imageUrl": "./assets/img/drink/orangina.png"
+      "imageUrl": "./assets/img/drink/orangina.jpg"
     },
     {
       "id": "8",
