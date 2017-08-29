@@ -27,4 +27,12 @@ export default class AccountService {
             );
         }
     }
+
+    getUserCommands(userId) {
+        return this.$http.get(this.apiUrls.command)
+            .then(result => {
+                let commands = result.data
+                return commands.filter(cmd => cmd.idUser === userId)
+            })
+    }
 }

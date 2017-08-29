@@ -42,4 +42,24 @@
 
 <div class="container">
     <h2>Commandes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Numéro</th>
+                <th>Statut</th>
+                <th>Détails</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="command in $ctrl.commands">
+            <tr>
+                <td>{{ command.date }}</td>
+                <td>{{ command.id }}</td>
+                <td>{{ command.status }}</td>
+                <td>{{  }}</td>
+                <td>{{  }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

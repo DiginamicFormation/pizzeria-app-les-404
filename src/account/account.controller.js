@@ -5,9 +5,15 @@ export default class AccountController {
         this.master = {};
         this.reset();
 
-        accountService.getUserById(sessionStorage.getItem('userId', true)).then((user) => {
+        this.userId = sessionStorage.getItem('userId', true);
+
+        accountService.getUserById(this.userId).then((user) => {
             this.user = user
             this.master = angular.copy(user)
+        })
+
+        accountService.getUserCommands(this.userId).then((commands) => {
+            this.commands = commands
         })
     }
 
