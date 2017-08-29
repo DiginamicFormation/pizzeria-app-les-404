@@ -1,20 +1,20 @@
 <br>
 <div class="row" ng-if="$ctrl.itemType === 'pizza'">
     <div>
-        <label class="radio-inline" for="radios-0" ng-class="{'text-primary bold': !item.category}">
-              <input name="radios" id="radios-0" type="radio" hidden checked="checked" ng-model="item.category" value="">
+        <label class="radio-inline" for="radios-0" ng-class="{'text-primary bold': !$ctrl.itemsFilter.category}">
+              <input name="radios" id="radios-0" type="radio" hidden checked="checked" ng-model="$ctrl.itemsFilter.category" value="">
               Tous <span class="badge">{{ ($ctrl.itemsList).length }}</span>
         </label>
-        <label class="radio-inline" for="radios-1" ng-class="{'text-primary bold': item.category === 'meat'}">
-              <input name="radios" id="radios-1" type="radio" hidden ng-model="item.category" value="meat">
+        <label class="radio-inline" for="radios-1" ng-class="{'text-primary bold': $ctrl.itemsFilter.category === 'meat'}">
+              <input name="radios" id="radios-1" type="radio" hidden ng-model="$ctrl.itemsFilter.category" value="meat">
               Viande <span class="badge">{{ ($ctrl.itemsList | filter:{ category : "meat"}).length }}</span>
         </label>
-        <label class="radio-inline" for="radios-2" ng-class="{'text-primary bold': item.category === 'fish'}">
-              <input name="radios" id="radios-2" type="radio" hidden ng-model="item.category" value="fish">
+        <label class="radio-inline" for="radios-2" ng-class="{'text-primary bold': $ctrl.itemsFilter.category === 'fish'}">
+              <input name="radios" id="radios-2" type="radio" hidden ng-model="$ctrl.itemsFilter.category" value="fish">
               Poisson <span class="badge">{{ ($ctrl.itemsList | filter:{ category : "fish"}).length }}</span>
         </label>
-        <label class="radio-inline" for="radios-3" ng-class="{'text-primary bold': item.category === 'veggie'}">
-              <input name="radios" id="radios-3" type="radio" hidden ng-model="item.category" value="veggie">
+        <label class="radio-inline" for="radios-3" ng-class="{'text-primary bold': $ctrl.itemsFilter.category === 'veggie'}">
+              <input name="radios" id="radios-3" type="radio" hidden ng-model="$ctrl.itemsFilter.category" value="veggie">
               Sans viande
               <span class="badge">{{ ($ctrl.itemsList | filter:{ category : "veggie"}).length }}</span>
         </label>
@@ -22,7 +22,7 @@
 </div>
 <br>
 <div class="row">
-    <div ng-repeat="item in $ctrl.itemsList | filter:item.category" class="col-sm-6 col-md-4">
+    <div ng-repeat="item in $ctrl.itemsList | filter:$ctrl.itemsFilter.category" class="col-sm-6 col-md-4">
         <div class="thumbnail">
             <img src="{{ item.imageUrl }}" alt="" class="img-responsive">
             <div class="caption">

@@ -4,8 +4,6 @@ export default class ItemsListCtrl {
         this.$location = $location
         this.itemType = this.$location.hash()
 
-        console.log("hash:", this.$location.hash());
-
         itemService.getItemsByType(this.itemType).then((result) => {
             this.itemsList = result
         })

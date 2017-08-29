@@ -7,9 +7,6 @@ import ApiUrlsService from "../apiUrls/apiUrls.service"
 // Components
 import itemsListComponent from "./itemsList.component"
 
-// Template
-let itemsListTpl = '<items-list-component></items-list-component>'
-
 const menuModule = angular
     .module('menuModule', [ngRoute])
 
