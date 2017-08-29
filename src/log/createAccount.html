@@ -6,10 +6,16 @@
     </style>
     <h1>Créer un compte</h1>
     <hr>
+    <div ng-show="$ctrl.$location.hash()==='invalid'" class="col-xs-12 alert alert-danger">
+        Merci de remplir au minimum les champs Email et Mot de passe !
+    </div>
+    <div ng-show="$ctrl.$location.hash()==='alreadyTaken'" class="col-xs-12 alert alert-danger">
+        Cet email est déjà pris !
+    </div>
     <form class="col-sm-8 col-sm-offset-2 form-horizontal">
         <div class="row">
             <label class="col-sm-4 control-label" for="email">
-                Email :
+                <span class="red">*</span> Email :
             </label>
             <div class="col-sm-8">
                 <input type="email" name="email" id="email" ng-model="$ctrl.email" placeholder="Votre adresse mail" class="form-control input-sm" required/>
@@ -17,10 +23,34 @@
         </div>
         <div class="row">
             <label class="col-sm-4 control-label" for="password">
-                Mot de passe :
+                <span class="red">*</span> Mot de passe :
             </label>
             <div class="col-sm-8">
                 <input type="password" id="password" ng-model="$ctrl.password" placeholder="Votre mot de passe" class="form-control input-sm" required/>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 control-label" for="nom">
+                Nom :
+            </label>
+            <div class="col-sm-8">
+                <input type="text" name="nom" id="nom" ng-model="$ctrl.nom" placeholder="Votre nom" class="form-control input-sm"/>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 control-label" for="prenom">
+                Prénom :
+            </label>
+            <div class="col-sm-8">
+                <input type="text" name="prenom" id="prenom" ng-model="$ctrl.prenom" placeholder="Votre prénom" class="form-control input-sm"/>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-sm-4 control-label" for="adresse">
+                Adresse :
+            </label>
+            <div class="col-sm-8">
+                <input type="text" name="adresse" id="adresse" ng-model="$ctrl.adresse" placeholder="Votre adresse" class="form-control input-sm"/>
             </div>
         </div>
         <div class="row">

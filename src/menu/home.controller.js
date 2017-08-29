@@ -9,7 +9,6 @@ export default class homeCtrl {
                     this.itemsList.push(result[i])
                 }
             }
-            console.log(this.itemsList)
         })
     }
 }

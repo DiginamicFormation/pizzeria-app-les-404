@@ -64,6 +64,14 @@ ul li{
     margin-bottom: 15px;
 }
 
+span.red{
+    color: red;
+}
+
+a img{
+    max-height: 20px;
+}
+
 /* Margins */
 .margin-bottom-10 {
     margin-bottom: 10px;

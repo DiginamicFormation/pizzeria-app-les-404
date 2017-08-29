@@ -46,11 +46,6 @@ export default class CommandCtrl {
         this.calculs();
     }
 
-getAmount() {
-    
-  return  createList().length;
-} 
-
 //getPanier
 getPanier(){
     JSON.parse(this.storage.getItem("panier"))
