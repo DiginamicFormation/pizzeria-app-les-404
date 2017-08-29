@@ -15,10 +15,18 @@ body {
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 50px;
+    height: 85px;
     padding-top: 15px;
     background-color: #000000;
 }
+
+@media (min-width: 768px)  {
+    .footer {
+        height: 50px;
+    }
+}
+
+
 
 .bold {
     font-weight: bold;
