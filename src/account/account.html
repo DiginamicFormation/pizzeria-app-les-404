@@ -1,1 +1,45 @@
-<h2>ACCOUNT PAGE</h2>
+<div class="container">
+    <h2>Informations personnelles</h2>
+    <div class="infos col-sm-8">
+        <form novalidate>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label" for="textinput">Email</label>
+                <div class="col-sm-9">
+                    <input id="textinput" name="textinput" class="form-control input-md" type="text" ng-model="$ctrl.user.email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label" for="textinput">Mot de passe</label>
+                <div class="col-sm-9">
+                    <input id="textinput" name="textinput" class="form-control input-md" type="text" ng-model="$ctrl.user.password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label" for="textinput">Nom</label>
+                <div class="col-sm-9">
+                    <input id="textinput" name="textinput" class="form-control input-md" type="text" ng-model="$ctrl.user.nom">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label" for="textinput">Prénom</label>
+                <div class="col-sm-9">
+                    <input id="textinput" name="textinput" class="form-control input-md" type="text" ng-model="$ctrl.user.prenom">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label" for="textinput">Adresse</label>
+                <div class="col-sm-9">
+                    <input id="textinput" name="textinput" class="form-control input-md" type="text" ng-model="$ctrl.user.adresse">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="majBtn col-sm-4">
+        <button class="btn btn-success col-xs-12 margin-bottom-10" ng-click="$ctrl.update($ctrl.user)">Metre à jour</button>
+        <button class="btn btn-warning col-xs-12" ng-click="$ctrl.reset()">Reset</button>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Commandes</h2>
+</div>
