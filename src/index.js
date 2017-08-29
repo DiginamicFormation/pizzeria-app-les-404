@@ -9,11 +9,13 @@ import log from './log/log.module'
 import account from './account/account.module'
 import command from './command/command.module'
 import menu from './menu/menu.module'
+import header from './header/header.component'
 
 angular
-  .module('pizzeriaApp', [uiBootstrap, log.name, menu.name])
-  .config(($routeProvider) => {
-      $routeProvider.otherwise({
-          redirectTo : '/'
-      });
-});
+    .module('pizzeriaApp', [uiBootstrap, log.name, menu.name])
+    .component('headerComponent', header)
+    .config(($routeProvider) => {
+        $routeProvider.otherwise({
+            redirectTo : '/'
+        });
+    });

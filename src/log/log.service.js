@@ -5,7 +5,11 @@ export default class logService {
     }
     
     isConnected(){
-        return sessionStorage.getItem('session')
+        if(sessionStorage.getItem('session')){
+            return true
+        }else{
+            return false
+        }
     }
     
     checkUser(email, password){

@@ -20,4 +20,4 @@ export default class createAccountCtrl{
     }
 }
 
-createAccountCtrl.$inject = ['logService', '$location'];
+createAccountCtrl.$inject = ['logService', '$location']

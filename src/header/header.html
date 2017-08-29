@@ -1,0 +1,70 @@
+<style>
+    .logo img{
+        max-height: 100px;
+    }
+    
+    nav.row{
+        border: 1px solid #ddd;
+        padding: 0;
+    }
+    
+    ul{
+        margin: 5px 0 5px 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    ul.actions{
+        padding: 30px;
+        justify-content: flex-end;
+    }
+    
+    ul li{
+        margin-right: 4px;
+    }
+</style>
+
+<div class="header col-xs-12">
+    <div class="row">
+        <div class="logo col-xs-2">
+            <a href="/">
+                <img ng-src="{{$ctrl.logo.url}}" title="{{$ctrl.logo.title}}" class="img-responsive"/>
+            </a>
+        </div>
+        <ul class="actions col-xs-10">
+            <li ng-if="$ctrl.logService.isConnected()">
+                <a href="/#!/panier" class="btn btn-warning">Mon Panier <span class="badge">12</span></a>
+            </li>
+            <li ng-if="$ctrl.logService.isConnected()">
+                <a href="/#!/account" class="btn btn-info">Mon Compte</a>
+            </li>
+            <li ng-if="!$ctrl.logService.isConnected()">
+                <a href="/#!/logging" class="btn btn-success">Connexion</a>
+            </li>
+            <li ng-if="$ctrl.logService.isConnected()">
+                <a ng-click="$ctrl.logService.disconnect()" class="btn btn-danger">Déconnexion</a>
+            </li>
+        </ul>
+    </div>
+    <nav class="row col-xs-10 col-xs-offset-1">
+        <ul>
+            <li>
+                <a href="/#!/menu#menu" class="btn btn-default">Menus</a>
+            </li>
+            <li>
+                <a href="/#!/menu#entree" class="btn btn-default">Entrées</a>
+            </li>
+            <li>
+                <a href="/#!/menu#pizza" class="btn btn-default">Pizzas</a>
+            </li>
+            <li>
+                <a href="/#!/menu#dessert" class="btn btn-default">Desserts</a>
+            </li>
+            <li>
+                <a href="/#!/menu#drink" class="btn btn-default">Boissons</a>
+            </li>
+        </ul>
+    </nav>
+</div>
