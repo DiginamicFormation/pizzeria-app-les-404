@@ -29,8 +29,8 @@
                 <h3 class="text-center">{{ item.label }}</h3>
                 <p>{{ item.description }}</p>
                 <p class="text-center">
-                    <a href="#" class="btn btn-success" role="button">Ajouter</a>
-                    <a href="#" class="btn btn-warning" role="button">Retirer</a>
+                    <a class="btn btn-success" role="button" ng-click="$ctrl.addToBasket(item.id)">Ajouter</a>
+                    <a class="btn btn-warning" role="button" ng-click="$ctrl.removeFromBasket(item.id)">Retirer</a>
                 </p>
             </div>
         </div>
