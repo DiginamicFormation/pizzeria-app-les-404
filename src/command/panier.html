@@ -16,38 +16,26 @@
                 </tr>
             </thead>
              <tbody>
-                 <div class="row">
-                     <h3>TEST</h3>
-                     {{$ctrl.test | json }}
-                     <h3>TEST</h3>
-                 </div>
-                 <tr ng-repeat="item in $ctrl.panier.items">
-                     
-                     <td><img ng-src="{{$ctrl.item.imageUrl}}"></img></td>
+                 <tr ng-repeat="item in $ctrl.panier">
+                     <td><img ng-src="{{item.item.imageUrl}}" height="200" width="200"></img></td>
                      <td>
                      <ul>
 
-                        <li> {{$ctrl.item.label}} </li>
-                        <li> {{$ctrl.item.description}} </li>
-                        <a ng-click ="removeItem(item.id)" href="url">Suprimmer</a>
+                        <li> {{item.item.label}} </li>
+                        <li> {{item.item.description}} </li>
+                        <button ng-click ="$ctrl.removeItem(item.item.id)">Suprimmer</button>
                         
                     </ul>
                     </td>
 
-                    <td> {{$ctrl.item.prix}}</td>
+                    <td> {{item.item.price}}</td>
                     <td> 
                         <div class="form-group">
-                            
-                            <select class="form-control" id="sel1" ng-model="quantity">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                             <input type="number" ng-change="$ctrl.changeQuantity(item)" ng-model="item.quantity" name="quantity" min="1" max="5" step='1'>
                         </div>
                     </td>
                 </tr>
+               
             </tbody>
         </table>
     </div>
@@ -66,20 +54,20 @@
   <tbody>
     <tr>
       <th scope="row">Total</th>
-      <td>{{ctrl.total}}€</td>
+      <td>{{$ctrl.total}}€</td>
     </tr>
     <tr>
       <th scope="row">Promotion -10%</th>
-      <td>-{{ctrl.promotion}}€</td>
+      <td>-{{$ctrl.promotion}}€</td>
     </tr>
     <tr>
       <th scope="row">Total à payer</th>
-      <td>{{ctrl.paye}}€</td>
+      <td>{{$ctrl.paye}}€</td>
     </tr>
   </tbody>
 </table>
 
-<button ng-click="ctrl.passCommande('user')">Passer la commande </button>
+<button ng-click="ctrl.passCommande()">Passer la commande </button>
 </div>
 
 

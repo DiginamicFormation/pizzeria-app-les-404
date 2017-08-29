@@ -71,3 +71,19 @@ span.red{
 a img{
     max-height: 20px;
 }
+
+/* Margins */
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+/* Form validation */
+input.ng-dirty.ng-invalid,
+.ng-submitted input.ng-invalid {
+    background-color: red;
+}
+
+input.ng-dirty.ng-valid,
+.ng-submitted input.ng-valid {
+    color: green;
+}

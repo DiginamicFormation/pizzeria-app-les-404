@@ -1,8 +1,10 @@
 export default class CommandService {
 
-    constructor($http) {
+    constructor($http, itemService) {
         this.$http = $http;
 
+
+ this.itemService = itemService;
 
         $http({method: 'GET', url: 'http://localhost:3000/command'})
             .then((response) => {
@@ -47,6 +49,22 @@ export default class CommandService {
     getAmount(){
         return 0;
     }
+
+
+calculs(commande){
+
+let total = 0;
+
+    commande.items.forEach((element)=>{
+        
+        this.total = this.total + itemService.getItemById(element).price
+  })
+
+let promotion = 0.1 * this.total
+this.paye = total - promotion
+
+}
+
 
 }
 

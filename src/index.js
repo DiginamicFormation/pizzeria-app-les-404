@@ -12,7 +12,7 @@ import menu from './menu/menu.module'
 import header from './header/header.component'
 
 angular
-    .module('pizzeriaApp', [uiBootstrap, log.name, account.name, menu.name, command.name])
+    .module('pizzeriaApp', [uiBootstrap, log.name, menu.name, command.name])
     .component('headerComponent', header)
     .config(($routeProvider) => {
         $routeProvider.otherwise({
