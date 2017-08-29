@@ -11,7 +11,7 @@ import command from './command/command.module'
 import menu from './menu/menu.module'
 
 angular
-  .module('pizzeriaApp', [uiBootstrap, log.name])
+  .module('pizzeriaApp', [uiBootstrap, log.name, menu.name])
   .config(($routeProvider) => {
       $routeProvider.otherwise({
           redirectTo : '/'

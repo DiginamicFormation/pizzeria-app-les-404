@@ -6,7 +6,7 @@
       "label": "Margherita",
       "description": "Margerita pizza",
       "price": "12.00",
-      "category": "meat",
+      "category": "veggie",
       "imageUrl": "./assets/img/pizza/margherita.jpg"
     },
     {
@@ -15,7 +15,7 @@
       "label": "4 cheese",
       "description": "4 cheese pizza",
       "price": "11.00",
-      "category": "noMeat",
+      "category": "veggie",
       "imageUrl": "./assets/img/pizza/4cheese.jpg"
     },
     {
