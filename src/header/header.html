@@ -7,7 +7,7 @@
         </div>
         <ul class="actions col-xs-9">
             <li ng-if="$ctrl.logService.isConnected()">
-                <a href="/#!/panier" class="btn btn-warning">Mon Panier <span class="badge">12</span></a>
+                <a href="/#!/panier" class="btn btn-warning">Mon Panier <span class="badge">{{$ctrl.getShoppingCartAmount()}}</span></a>
             </li>
             <li ng-if="$ctrl.logService.isConnected()">
                 <a href="/#!/account" class="btn btn-info">Mon Compte</a>
