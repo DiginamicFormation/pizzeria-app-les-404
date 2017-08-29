@@ -197,6 +197,11 @@
       "email": "t.t@hotmail.com",
       "password": "12345678",
       "adresse": "10 boulevard Foch 49000 Angers"
+    },
+    {
+      "email": "root@root",
+      "password": "root",
+      "id": "B1ZlrszKW"
     }
   ],
   "command": [

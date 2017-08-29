@@ -9,9 +9,12 @@ export default class logService {
     }
     
     checkUser(email, password){
-        let found = false
-        this.$http.get(this.apiUrls.account)
+        return this.$http.get(this.apiUrls.account)
             .then(users => {
+                return users.data
+            })
+            .then(users => {
+                let found = false;
                 if(users.length>0){
                     users.forEach(user => {
                         if(user.email == email && user.password == password){
@@ -19,8 +22,24 @@ export default class logService {
                         }
                     })
                 }
-        })
-        return found
+                return found;
+            })
+    }
+    
+    isMailFree(email){
+        return this.$http.get(this.apiUrls.account)
+            .then(users => {
+                return users.data
+            })
+            .then(users => {
+                let free = true;
+                users.forEach(user => {
+                    if(user.email == email){
+                        free = false;
+                    }
+                })
+                return free
+            })
     }
     
     connect(){
@@ -33,25 +52,8 @@ export default class logService {
     }
     
     createUser(user){
-        if(user.email && user.password && !this.checkUser(user.email, user.password)){
-            user.id = this.getNextId()
+        if(user.email && user.password){
             this.$http.post(this.apiUrls.account, user)
         }
-    }
-    
-    getNextId(){
-        let maxId = false
-        this.$http.get(this.apiUrls.account)
-            .then(users => {
-                users.forEach(user => {
-                    if(user.id > maxId){
-                        maxId = user.id
-                    }
-                })
-        })
-        if(!maxId){
-            maxId = 1
-        }
-        return maxId
     }
 }

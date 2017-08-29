@@ -5,13 +5,17 @@ export default class logCtrl{
     }
     
     tryConnect(email, password){
-        if(this.logService.checkUser(email, password)){
-            this.logService.connect()
-            this.location.path('/')
-        }else{
-            this.$location.path('/logging')
-            this.$location.hash('error')
-        }
+        this.logService.checkUser(email, password)
+            .then(found => {
+                if(found){
+                    this.logService.connect()
+                    this.$location.path('/')
+                    this.$location.hash('')
+                }else{
+                    this.$location.path('/logging')
+                    this.$location.hash('error')
+                }
+        })
     }
 }
 

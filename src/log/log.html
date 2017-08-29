@@ -6,6 +6,9 @@
     </style>
     <h1>Connexion</h1>
     <hr>
+    <div ng-show="$ctrl.$location.hash()" class="col-xs-12 alert alert-danger">
+        Adresse email ou mot de passe invalide !
+    </div>
     <form class="col-sm-8 col-sm-offset-2 form-horizontal">
         <div class="row">
             <label class="col-sm-4 control-label" for="email">
