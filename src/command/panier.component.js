@@ -8,4 +8,4 @@ const panierComponent = {
     controller: CommandCtrl
 };
 
-export default footPanier
+export default panierComponent

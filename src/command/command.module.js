@@ -1,28 +1,27 @@
 
-import CommandService from './command.service'
-import CommandCtrl from './command.controller'
 
+// Services
 import ItemService from "../item/item.service"
 import ApiUrlsService from "../apiUrls/apiUrls.service"
+import CommandService from './command.service'
 
-import panier from './panier.html'
-import commande from './commande.html'
+// Components
 
 import commandComponent from './command.component'
+import panierComponent from './panier.component'
 
 const commandModule = angular.module('commandModule', ['ngRoute'])
 
 .service('CommandService', CommandService)
 .service('itemService', ItemService)
 .value('apiUrlsService', ApiUrlsService)
-
 .component('commandComponent', commandComponent)
-
+.component('panierComponent', panierComponent)
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/panier',{
-        template: '<command-component></command-component>'
+        template: '<panier-component></panier-component>'
     }).when('/commande', {
-        template: commande
+        template: '<command-component></command-component>'
     });
 
 
