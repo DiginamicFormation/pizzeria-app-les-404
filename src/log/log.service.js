@@ -34,7 +34,6 @@ export default class logService {
 	}
 
 	connect(userId) {
-		console.log(userId);
 		sessionStorage.setItem('session', true)
 		sessionStorage.setItem('userId', userId)
 	}
