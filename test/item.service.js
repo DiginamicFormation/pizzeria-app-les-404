@@ -218,7 +218,7 @@ describe('Test de ItemService: ', () => {
                     "price": "11.00",
                     "category": "veggie",
                     "imageUrl": "./assets/img/pizza/4cheese.jpg"
-                  }
+                }
                 expect(items).toContain(pizza4Cheese)
                 let drinkOrangina = {
                     "id": "7",
