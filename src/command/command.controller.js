@@ -6,146 +6,89 @@ export default class CommandCtrl {
         this.storage = localStorage;
         this.suggestions = [];//table with the suggestions
         this.itemList = []; //it will be send to create the command
+        this.panier = [];
+
+        this.init();
+        this.total = this.commandService.total
+        this.promotion = this.commandService.promotion
+        this.paye = this.commandService.paye
 
 
-        this.itemss = {
-            "id": "2",
-            "type": "pizza",
-            "label": "4 cheese",
-            "description": "4 cheese pizza",
-            "price": "11.00",
-            "category": "veggie",
-            "imageUrl": "./assets/img/pizza/4cheese.jpg"
-        }
-
-        this.items2 = {
-            "id": "3",
-            "type": "pizza",
-            "label": "Salmon",
-            "description": "Salmon pizza",
-            "price": "15.50",
-            "category": "fish",
-            "imageUrl": "./assets/img/pizza/salmon.jpg"
-        }
-
-
-
-        //initialization of panier
-        this.panier = [{
-            item: this.itemss,
-            quantity: 4
-        },
-        {
-            item: this.items2,
-            quantity: 2
-        }]
-
-
-        /** this.panier.items.forEach(e => {
-         itemService.getItemById(e.item).then(item => {
-             e.item = item
-         })
-     })*/
         this.storage.setItem("panier", JSON.stringify(this.panier))
 
-        this.calculs();
     }
+
+
+
+    //add item
+    addItem(itemId, quantity = 1) {
+        this.commandService.addItem(itemId, quantity = 1);
+    }
+
+
 
     //getPanier
     getPanier() {
-        JSON.parse(this.storage.getItem("panier"))
+        this.panier = this.itemService.panier;
+        //JSON.parse(this.storage.getItem("panier"))
     }
 
 
-    refresh() {
-        this.storage.setItem("panier", JSON.stringify(this.panier))
-        this.calculs();
-    }
 
-    //add item to panier
-    //NOT TESTED
-    addItem(itemId, quantity = 1) {
-        let item = itemService.getItemById(itemId)
-        this.panier.push({ item: item.item, quantity: quantity })
-        this.refresh();
+
+    //remove item(s) from basket (localStorage)!!!!
+    removeItem(idItem) {
+        this.commandService.removeItem(idItem)
     }
 
     //change the quantity!!!!!
     changeQuantity(item) {
-        console.log("test", item)
-        this.panier.forEach((element) => {
-            if (item.item.id == element.id) {
-                element.quantity = item; item.quantity;
-            }
-        })
-        this.refresh();
 
-    }
-
-    //remove item(s) from basket (localStorage)!!!!
-    removeItem(idItem) {
-
-        let newPanier = [];
-        this.panier.forEach(item => {
-            console.log(item.item);
-            if (item.item.id != idItem) {
-                newPanier.push(item);
-            }
-        })
-
-        this.panier = newPanier;
-        this.refresh();
+        this.commandService.changeQuantity(item)
     }
 
 
 
 
-    calculs() {
 
-        this.total = 0;
-
-        this.panier.forEach((element) => {
-            this.total = this.total + (element.item.price) * element.quantity
-        })
-
-        this.promotion = 0.1 * this.total
-        this.paye = this.total - this.promotion
-
-    }
 
 
     passCommande() {
         //create current in command service
-         this.createList();
-         console.log(this.itemList)
-        this.commandService.createCommand(sessionStorage.getItem("userId"), this.itemList);
+        this.commandService.createCommand(sessionStorage.getItem("userId"));
 
     }
-
-
-
-    createList() {
-        this.panier.forEach((element) => {
-
-            for (let i = 0; i < element.quantity; i++)
-                this.itemList.push(element.item.id);
-        })
-        return this.itemList;
-    }
-
-
-
-
 
     modifyCommande() {
         //redirect
         this.$location.path("/panier")
-        ///pannier
     }
 
     confirmCommande() {
         //put
         this.commandService.finalizeCommand();
+    }
+
+    init() {
+
+        return new Promise((resolve, reject) => {
+            this.commandService.panier.forEach(element => {
+                this.itemService.getItemById(element.item).then(item => {
+                    let priceTotal;
+                    if (!item.price) {
+                        item.items.forEach((truc) => {
+                            this.itemService.getItemById(truc).then(chose => {
+                                priceTotal += chose.price;
+                            })
+                        })
+                        priceTotal * element.coeff
+                    } else { priceTotal = item.price }
+
+                    this.panier.push({ item: item, quantity: element.quantity, price: priceTotal })
+                })
+                console.log(element.price)
+            });
+        })
     }
 
 }

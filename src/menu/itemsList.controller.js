@@ -1,9 +1,10 @@
 export default class ItemsListCtrl {
-    constructor(itemService, logService, $location) {
+    constructor(itemService, logService, $location, CommandService) {
         this.itemService = itemService
         this.logService = logService
         this.$location = $location
         this.itemType = this.$location.hash()
+        this.CommandService = CommandService;
 
         itemService.getItemsByType(this.itemType).then((result) => {
             this.itemsList = result
@@ -15,12 +16,16 @@ export default class ItemsListCtrl {
     }
 
     addToBasket(idItem, quantity = 1) {
+
         console.log("Add to basket: idItem:", idItem, "/ qty:", quantity);
+        this.CommandService.addItem(idItem, quantity);
     }
 
-    removeFromBasket(idItem, quantity = 1) {
+    removeFromBasket(idItem, quantity = -1) {
         console.log("Remove from basket: idItem:", idItem, "/ qty:", quantity);
+         console.log("Add to basket: idItem:", idItem, "/ qty:", quantity);
+        this.CommandService.addItem(idItem, quantity);
     }
 }
 
-ItemsListCtrl.$inject = ['itemService', 'logService', '$location'];
+ItemsListCtrl.$inject = ['itemService', 'logService', '$location', 'CommandService'];
