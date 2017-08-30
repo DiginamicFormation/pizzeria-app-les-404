@@ -6,12 +6,14 @@ export default class CommandService {
 
         this.itemService = itemService;
 
-        $http({ method: 'GET', url: 'http://localhost:3000/command' })
+        this.$http({ method: 'GET', url: 'http://localhost:3000/command' })
             .then((response) => {
                 this.listCommands = response.data
             })
-		
-		this.itemList = []
+
+
+            this.itemList = [];
+            this.currentCommand;
 
     }
 
@@ -22,23 +24,32 @@ export default class CommandService {
     //initializes basket
     createCommand(idUser, itemList) {
         let d = new Date()
+        let dd = d.getDate()
+        let mm = d.getMonth()+1
+        let yy = d.getFullYear()
+        let dat = dd+'/'+mm +'/'+ yy;
         this.itemList = itemList
-        return this.currentCommand = {
-            "id": "CMD" + Math.floor((Math.random() * 100) + 1),
+        let num=Math.floor((Math.random() * 100) + 1)
+        let id = 'CMD' + num 
+
+        this.currentCommand = {
+            "id": id,
             "idUser": idUser,
             "items": this.itemList,
-            "date": d.getDate(),
-            "status": "delivered",
+            "date": dat,
+            "status": "delivered"
         }
+        console.log(this.currentCommand)
+        return this.currentCommand;
     }
 
     //create the command
     finalizeCommand() {
+        console.log(this.currentCommand)
         this.$http({
             method: 'POST',
             url: 'http://localhost:3000/command/',
-            data:
-            this.currentCommand
+            data:this.currentCommand
         })
             .then((response) => {
             })
