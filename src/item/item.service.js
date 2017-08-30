@@ -1,28 +1,28 @@
 export default class ItemService {
-    constructor($http, apiUrlsService) {
-        this.$http = $http
-        this.apiUrlsService = apiUrlsService
-    }
+	constructor($http, apiUrlsService) {
+		this.$http = $http
+		this.apiUrlsService = apiUrlsService
+		this.getAll()
+			.then(data => {
+				console.log(data)
+				this.items = data
+			})
+	}
 
-    getItemById(idItem) {
-        return this.$http.get(this.apiUrlsService.item + "/" + idItem)
-            .then((result) => {
-                return (result.data)
-            },
-            (error) => {
-                console.log(`No item found with id [${idItem}]`);
-                return []
-            })
-    }
+	getAll() {
+		return this.$http.get(this.apiUrlsService.item)
+			.then((result) => {
+				return (result.data)
+			})
+	}
 
-    getItemsByType(type) {
-        return this.$http.get(this.apiUrlsService.item)
-            .then((result) => {
-                return result.data.filter(i => i.type === type)
-            },
-            (error) => {
-                console.log(`No item found for type [${type}]`);
-                return []
-            })
-    }
+	getItemById(idItem) {
+		return this.items.find(i => i.id == idItem)
+	}
+
+	getItemsByType(type) {
+		if (this.items) {
+			return this.items.filter(i => i.type == type)
+		}
+	}
 }
