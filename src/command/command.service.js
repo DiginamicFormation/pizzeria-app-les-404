@@ -11,8 +11,10 @@ export default class CommandService {
                 this.listCommands = response.data
             })
 
+
             this.itemList = [];
             this.currentCommand;
+
     }
 
     listCommands() {
