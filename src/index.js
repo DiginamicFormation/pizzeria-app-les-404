@@ -22,4 +22,7 @@ angular
         $routeProvider.otherwise({
             redirectTo : '/'
         });
-    });
+    })
+    .run( (itemService) => {
+        itemService.getAllItems()
+    })

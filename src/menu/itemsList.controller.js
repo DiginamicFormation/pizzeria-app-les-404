@@ -9,19 +9,11 @@ export default class ItemsListCtrl {
 		this.itemsList = itemService.getItemsByType(this.itemType)
 	}
 
-	getItemsList() {
-		return this.itemsList
-	}
-
 	addToBasket(idItem, quantity = 1) {
-
-		console.log("Add to basket: idItem:", idItem, "/ qty:", quantity);
 		this.CommandService.addItem(idItem, quantity);
 	}
 
 	removeFromBasket(idItem, quantity = - 1) {
-		console.log("Remove from basket: idItem:", idItem, "/ qty:", quantity);
-		console.log("Add to basket: idItem:", idItem, "/ qty:", quantity);
 		this.CommandService.addItem(idItem, quantity);
 	}
 }

@@ -3,13 +3,13 @@ export default class homeCtrl {
         this.$location = $location
         this.itemsList = []
 
-        itemService.getItemsByType("pizza").then((result) => {
-            for(let i = result.length-1; i>result.length-7; i--){
-                if(result[i]){
-                    this.itemsList.push(result[i])
-                }
+        let pizzas = itemService.getItemsByType("pizza")
+
+        for (let i = pizzas.length - 1; i > pizzas.length - 7; i--) {
+            if (pizzas[i]) {
+                this.itemsList.push(pizzas[i])
             }
-        })
+        }
     }
 }
 
