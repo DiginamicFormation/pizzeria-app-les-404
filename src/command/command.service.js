@@ -19,50 +19,56 @@ export default class CommandService {
                 this.listCommands = response.data
             })
 
-
-
-
-
     }
 
     createList() {
         this.panier.forEach((element) => {
             for (let i = 0; i < element.quantity; i++)
-                this.itemList.push(element.item.id);
+                this.itemList.push(element.id)
         })
         return this.itemList;
     }
 
+    updateCommand(){
+        let d = new Date()
+        let dd = d.getDate()
+        let mm = d.getMonth() + 1
+        let yy = d.getFullYear()
+        let dat = dd + '/' + mm + '/' + yy;
+        this.itemList = this.createList();
+        this.currentCommand.items =this.itemList;
+        this.currentCommand.date =dat;
+    }
+    //initializes basket
+    createCommand() {
+        let user = sessionStorage.getItem("userId");
+        let d = new Date()
+        let num = Math.floor((Math.random() * 100) + 1)
+        let id = 'CMD' + num
+
+        this.currentCommand = {
+            "id": id,
+            "idUser": user,
+            "items": this.itemList,
+            "date": d,
+            "status": "delivered"
+        }
+        console.log(this.currentCommand)
+        return this.currentCommand;
+    }
+
+    listCommands() {
+        return listCommands;
+    }
 
     refresh() {
-
-        //this.storage.setItem("panier", JSON.stringify(this.panier))
-        this.calculs();
+        this.itemList = [];
+        this.createList()
+        this.calculss()
     }
 
 
     //add item to panier
-    //NOT TESTED
-    //add if the item already exists
-    /* addItem(itemId, quantity) {
-         let item = this.itemService.getItemById(itemId).then(item => {
-             let found = this.panier.find(i => i.item==item)
-             console.log(found)
-             if(found){
-                 found.quantity+= quantity
-             }else{
-                 this.panier.push({ item: item, quantity: 1 })
-             }
-             /*if(found.quantity==0){
-                 this.panier.pop(found)
-             }
-             //console.log(this.panier)
-             this.refresh();
-         })
-     }*/
-
-    //add item to panier
-    //NOT TESTED
     //add if the item already exists
     addItem(itemId, quantity) {
         let found = this.panier.find(i => i.item == itemId)
@@ -101,54 +107,40 @@ export default class CommandService {
         this.refresh();
     }
 
-    listCommands() {
-        return listCommands;
-    }
+    
 
-    //initializes basket
-    createCommand(idUser) {
-        this.itemList = this.createList();
-        let d = new Date()
-        let dd = d.getDate()
-        let mm = d.getMonth() + 1
-        let yy = d.getFullYear()
-        let dat = dd + '/' + mm + '/' + yy;
-
-        let num = Math.floor((Math.random() * 100) + 1)
-        let id = 'CMD' + num
-
-        this.currentCommand = {
-            "id": id,
-            "idUser": idUser,
-            "items": this.itemList,
-            "date": dat,
-            "status": "delivered"
-        }
-        console.log(this.currentCommand)
-        return this.currentCommand;
-    }
+    
 
 
 
     //POST the command
     finalizeCommand() {
-        this.$http({
+        this.updateCommand()
+        this.postCommand()
+        this.emptyCommand()
+    }
+
+    postCommand(){
+         this.$http({
             method: 'POST',
             url: 'http://localhost:3000/command/',
             data: this.currentCommand
         })
             .then((response) => {
             })
-
     }
-
+    emptyCommand(){
+        this.itemList = [];
+        this.panier = [];
+        this.currentCommand = this.createCommand();
+    }
 
     getAmount() {
         return this.itemList.length;
     }
 
 
-    calculs() {
+    calculss() {
         this.total = 0;
         this.currentCommand.items.forEach((element) => {
             this.itemService.getItemById(element).then(item => {
@@ -160,15 +152,15 @@ export default class CommandService {
     }
 
 
-    /** calculs(command) {
-         this.total = 0;
+    calculs(command) {
+         let total = 0;
       
          command.items.forEach((element) => {
-             this.total = this.total + this.itemService.getItemById(element).price
+             total = total + this.itemService.getItemById(element).price
          })
- this.promotion = 0.1 * this.total
- this.paye = this.total - this.promotion
-     }*/
+        let promotion = 0.1 * total
+        return paye = total - promotion
+     }
 
 }
 
