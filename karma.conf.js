@@ -1,8 +1,13 @@
 // Karma configuration
 // Generated on Wed Aug 30 2017 12:02:01 GMT+0200 (Romance Daylight Time)
 
-module.exports = function(config) {
+const webpackConfig = require('./webpack.config.js');
+
+module.exports = function (config) {
   config.set({
+
+    // configuration Webpack pour les tests
+    webpack: webpackConfig,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -15,6 +20,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'src/index.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'test/**/*.js'
     ],
 
@@ -27,6 +34,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/index.js': ['webpack'],
+      'test/**/*.js': ['webpack']
     },
 
 

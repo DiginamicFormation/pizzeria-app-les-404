@@ -11,6 +11,7 @@ export default class ItemService {
             },
             (error) => {
                 console.log(`No item found with id [${idItem}]`);
+                return []
             })
     }
 
@@ -21,6 +22,7 @@ export default class ItemService {
             },
             (error) => {
                 console.log(`No item found for type [${type}]`);
+                return []
             })
     }
 }
