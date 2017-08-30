@@ -1,6 +1,7 @@
 export default class logService {
-    constructor($http, apiUrlsService){
+    constructor($http, $location, apiUrlsService){
         this.$http = $http
+        this.$location = $location
         this.apiUrls = apiUrlsService
     }
     
@@ -55,6 +56,7 @@ export default class logService {
         sessionStorage.removeItem('session')
         sessionStorage.removeItem('userId')
         sessionStorage.clear()
+        this.$location.path('/')
     }
     
     createUser(user){

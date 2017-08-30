@@ -21,7 +21,6 @@ const accountModule = angular
                 template: '<account-component></account-component>',
                 resolve:{
                     "check": ($location, logService) => {
-                        console.log("is connected:", logService.isConnected());
                         if(!logService.isConnected()){
                             $location.path('/logging')
                         }
