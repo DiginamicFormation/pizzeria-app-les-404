@@ -10,7 +10,8 @@ export default class CommandService {
             .then((response) => {
                 this.listCommands = response.data
             })
-
+		
+		this.itemList = []
 
     }
 
