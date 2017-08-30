@@ -8,7 +8,7 @@ export default class CommandCtrl {
         this.itemService = itemService;
         this.storage = localStorage;
         this.suggestions = [];//table with the suggestions
-        this.itemList; //it will be send to create the command
+        this.itemList = []; //it will be send to create the command
 
 
         this.itemss = {
@@ -119,17 +119,18 @@ export default class CommandCtrl {
 
     passCommande() {
         //create current in command service
-
-        commandService.createCommand(sessionStorage.getItem("userId"), createList());
+         this.createList();
+         console.log(this.itemList)
+        this.commandService.createCommand(sessionStorage.getItem("userId"), this.itemList);
 
     }
 
 
 
     createList() {
-        panier.forEach((element) => {
+        this.panier.forEach((element) => {
 
-            for (i = 0; i < element.quantity; i++)
+            for (let i = 0; i < element.quantity; i++)
                 this.itemList.push(element.item.id);
         })
         return this.itemList;
@@ -147,7 +148,7 @@ export default class CommandCtrl {
 
     confirmCommande() {
         //put
-        commandService.finalizeCommand();
+        this.commandService.finalizeCommand();
     }
 
 }

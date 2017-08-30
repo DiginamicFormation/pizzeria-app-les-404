@@ -6,12 +6,13 @@ export default class CommandService {
 
         this.itemService = itemService;
 
-        $http({ method: 'GET', url: 'http://localhost:3000/command' })
+        this.$http({ method: 'GET', url: 'http://localhost:3000/command' })
             .then((response) => {
                 this.listCommands = response.data
             })
 
-
+            this.itemList = [];
+            this.currentCommand;
     }
 
     listCommands() {
@@ -22,22 +23,27 @@ export default class CommandService {
     createCommand(idUser, itemList) {
         let d = new Date()
         this.itemList = itemList
-        return this.currentCommand = {
-            "id": "CMD" + Math.floor((Math.random() * 100) + 1),
+        let num=Math.floor((Math.random() * 100) + 1)
+        let id = 'CMD' + num 
+
+        this.currentCommand = {
+            "id": id,
             "idUser": idUser,
             "items": this.itemList,
             "date": d.getDate(),
-            "status": "delivered",
+            "status": "delivered"
         }
+        console.log(this.currentCommand)
+        return this.currentCommand;
     }
 
     //create the command
     finalizeCommand() {
+        console.log(this.currentCommand)
         this.$http({
             method: 'POST',
             url: 'http://localhost:3000/command/',
-            data:
-            this.currentCommand
+            data:this.currentCommand
         })
             .then((response) => {
             })
