@@ -1,9 +1,9 @@
-describe('Test de ItemService avec $http', () => {
+describe(`Test d'apiUrlsService: `, () => {
     beforeEach(() => {
         angular.mock.module('pizzeriaApp')
     })
-    //injection du mock $httpBackend
-    it('mock du service $http', angular.mock.inject((apiUrlsService) => {
+    
+    it('test des URLs', angular.mock.inject((apiUrlsService) => {
         expect(apiUrlsService).toBeDefined()
         expect(apiUrlsService.base).toBe('http://localhost:3000/')
         expect(apiUrlsService.item).toBe('http://localhost:3000/item')

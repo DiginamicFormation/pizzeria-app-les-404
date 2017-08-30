@@ -1,6 +1,6 @@
 describe('Test de ItemService: ', () => {
     beforeAll(() => {
-        allItems = [
+        this.allItems = [
             {
                 "id": "1",
                 "type": "pizza",
@@ -171,10 +171,10 @@ describe('Test de ItemService: ', () => {
     beforeEach(() => {
         angular.mock.module('pizzeriaApp')
     })
-    //injection du mock $httpBackend
+    
     it('getItemById with available id',
         angular.mock.inject(($httpBackend, itemService) => {
-            // Définition du comportement attendu de $http
+            
             $httpBackend.when('GET', 'http://localhost:3000/item/1').respond([{
                 "id": "1",
                 "type": "pizza",
@@ -189,24 +189,24 @@ describe('Test de ItemService: ', () => {
                 expect(item.length).toBe(1)
                 expect(item[0].id).toBe('1')
             })
-            $httpBackend.flush(); // déclenche les réponses HTTP
+            $httpBackend.flush();
         }))
 
     it('getItemById with not available id',
         angular.mock.inject(($httpBackend, itemService) => {
-            // Définition du comportement attendu de $http
+            
             $httpBackend.when('GET', 'http://localhost:3000/item/50').respond([]);
             itemService.getItemById(50).then(item => {
                 expect(item).toBeDefined()
                 expect(item.length).toBe(0)
             })
-            $httpBackend.flush(); // déclenche les réponses HTTP
+            $httpBackend.flush();
         }))
 
-    it('getItemByType with available id',
+    it('getItemByType with existing type',
         angular.mock.inject(($httpBackend, itemService) => {
-            // Définition du comportement attendu de $http
-            $httpBackend.when('GET', 'http://localhost:3000/item').respond(allItems);
+            
+            $httpBackend.when('GET', 'http://localhost:3000/item').respond(this.allItems);
             itemService.getItemsByType('pizza').then(items => {
                 expect(items).toBeDefined()
                 expect(items.length).toBe(5)
@@ -230,17 +230,17 @@ describe('Test de ItemService: ', () => {
                 }
                 expect(items).not.toContain(drinkOrangina)
             })
-            $httpBackend.flush(); // déclenche les réponses HTTP
+            $httpBackend.flush();
         }))
 
-    it('getItemByType with not available id',
+    it('getItemByType with not existing type',
         angular.mock.inject(($httpBackend, itemService) => {
-            // Définition du comportement attendu de $http
-            $httpBackend.when('GET', 'http://localhost:3000/item').respond(allItems);
+            
+            $httpBackend.when('GET', 'http://localhost:3000/item').respond(this.allItems);
             itemService.getItemsByType('voiture').then(items => {
                 expect(items).toBeDefined()
                 expect(items.length).toBe(0)
             })
-            $httpBackend.flush(); // déclenche les réponses HTTP
+            $httpBackend.flush();
         }))
 })
