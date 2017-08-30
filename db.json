@@ -245,9 +245,8 @@
       "date": "08/09/2016",
       "status": "delivered"
     },
-  
     {
-      "id": "CMD13",
+      "id": "CMD22",
       "idUser": "B1ZlrszKW",
       "items": [
         "2",
@@ -257,7 +256,7 @@
         "3",
         "3"
       ],
-      "date": 30,
+      "date": "30/8/2017",
       "status": "delivered"
     }
   ]

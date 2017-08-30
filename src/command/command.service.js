@@ -24,6 +24,10 @@ export default class CommandService {
     //initializes basket
     createCommand(idUser, itemList) {
         let d = new Date()
+        let dd = d.getDate()
+        let mm = d.getMonth()+1
+        let yy = d.getFullYear()
+        let dat = dd+'/'+mm +'/'+ yy;
         this.itemList = itemList
         let num=Math.floor((Math.random() * 100) + 1)
         let id = 'CMD' + num 
@@ -32,7 +36,7 @@ export default class CommandService {
             "id": id,
             "idUser": idUser,
             "items": this.itemList,
-            "date": d.getDate(),
+            "date": dat,
             "status": "delivered"
         }
         console.log(this.currentCommand)
