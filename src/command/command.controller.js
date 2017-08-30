@@ -18,23 +18,21 @@ export default class CommandCtrl {
 
     }
 
-
-
     //add item
     addItem(itemId, quantity = 1) {
         this.commandService.addItem(itemId, quantity = 1);
+
     }
-
-
 
     //getPanier
     getPanier() {
-        this.panier = this.itemService.panier;
+        this.panier = [];
+        this.commandService.panier.forEach(element => {
+                this.itemService.getItemById(element.item).then(item => {
+                this.panier.push({ item: item, quantity: element.quantity, price: item.price })
+        })
         //JSON.parse(this.storage.getItem("panier"))
-    }
-
-
-
+    })}
 
     //remove item(s) from basket (localStorage)!!!!
     removeItem(idItem) {
@@ -43,21 +41,10 @@ export default class CommandCtrl {
 
     //change the quantity!!!!!
     changeQuantity(item) {
-
         this.commandService.changeQuantity(item)
     }
 
 
-
-
-
-
-
-    passCommande() {
-        //create current in command service
-        this.commandService.createCommand(sessionStorage.getItem("userId"));
-
-    }
 
     modifyCommande() {
         //redirect
